@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                sh 'bash build.sh'
+            }
+        }
+        stage('Push Docker Image to Dev') {
+            steps {
+                script {
+                    sh 'bash deploy.sh'
+                    }
+                }
+
+        }
+    }
+}
